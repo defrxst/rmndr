@@ -6,6 +6,10 @@
   display: flex
 }
 
+.w-11\/12 {
+  width: 91.666667%
+}
+
 .items-center {
   align-items: center
 }
@@ -14,12 +18,29 @@
   justify-content: center
 }
 
+.rounded-xl {
+  border-radius: 0.75rem
+}
+
+.border-2 {
+  border-width: 2px
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity))
+}
+
 .p-2 {
   padding: 0.5rem
 }
 
 .p-5 {
   padding: 1.25rem
+}
+
+.text-center {
+  text-align: center
 }
 
 .text-6xl {
