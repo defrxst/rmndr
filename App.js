@@ -14,10 +14,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <TailwindProvider utilities={utilities}>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerShown:false, gestureEnabled: false,}}>
           <Stack.Screen name="SplashScreen" component={SplashScreen} />
-          <Stack.Screen name="Main" component={Main} 
-          />
+          <Stack.Screen name="Main" component={Main} />
         </Stack.Navigator>
       </TailwindProvider>
     </NavigationContainer>
