@@ -3,7 +3,7 @@ import { Text, TextInput, View, Pressable, BackHandler, Alert } from "react-nati
 import { useTailwind } from "tailwind-rn";
 import { reminders } from "./NewReminder";
 
-function handleBackPress() {
+export function handleBackPress() {
     Alert.alert (
         'Exiting App',
         'Exit rmndr?',
@@ -36,7 +36,7 @@ const Main = ({navigation}) => {
 
     const reminderList = reminders?.map(reminder => 
         <Pressable style={tw('p-2 border-2 border-black w-11/12 rounded-xl')}>
-            <Text style={tw('text-black m-auo')}>{reminder.title}</Text>
+            <Text style={tw('text-black m-auto')}>{reminder.title}</Text>
         </Pressable>
     )
     
