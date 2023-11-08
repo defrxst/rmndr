@@ -24,7 +24,7 @@ export function handleBackPress() {
             cancelable: false
         },
     );
-    return true;
+    return false;
 }
 
 
@@ -34,9 +34,10 @@ const Main = ({navigation}) => {
 
     BackHandler.addEventListener("hardwareBackPress", handleBackPress);    
 
-    const reminderList = reminders?.map(reminder => 
-        <Pressable style={tw('p-2 border-2 border-black w-11/12 rounded-xl')}>
-            <Text style={tw('text-black m-auto')}>{reminder.title}</Text>
+
+    let reminderList = reminders.map(reminder => 
+        <Pressable onPress={()=>navigation.navigate('Reminder', reminder.reminderTitle, reminder.reminderDescription, reminder.reminderDate)} style={tw('p-2 border-2 border-black w-11/12 rounded-xl')}>
+            <Text style={tw('text-black m-auto')}>{reminder.reminderTitle}</Text>
         </Pressable>
     )
     

@@ -1,34 +1,28 @@
 import React, {useState} from 'react';
-import { BackHandler, Pressable, Text, TextInput, View } from 'react-native';
+import { BackHandler, Button, Pressable, Text, TextInput, View } from 'react-native';
 import { useTailwind } from 'tailwind-rn';
 import { handleBackPress } from './Main';
 import DatePicker from 'react-native-date-picker';
 
 
-export const reminders = [
-
+export var reminders = [
 ]
 
 
-
-function addReminder() {
-    reminders.push({
-        title: title,
-        description: description,
-        date: date
-    })    
-}
 
 const NewReminder = ({navigation}) => {
 
     const [title, setTitle] = React.useState('')
     const [description, setDescription] = React.useState('')
     const [date, setDate] = useState(new Date())
-    const [open, setOpen] = useState(false)
 
-
-    BackHandler.removeEventListener('hardwareBackPress', handleBackPress)
-
+    function addReminder() {
+        reminders.push({
+                reminderTitle: title,
+                reminderDate: date, 
+                reminderDescription: description
+        })    
+    }
 
     const tw = useTailwind();
     return (
@@ -38,27 +32,18 @@ const NewReminder = ({navigation}) => {
             <View>
                 <TextInput
                     placeholder='Title'
-                    onChangeText={(title) => {setTitle(text)}}
+                    onChangeText={(textTitle) => {setTitle(textTitle)}}
                     style={tw('w=11/12 border-black border-2 rounded-xl')}
                 />
+                <TextInput
+                    placeholder='Description'
+                    onChangeText={(textDescription) => {setDescription(textDescription)}}
+                    style={tw('w=11/12 border-black mt-2 border-2 rounded-xl')}
+                />
 
-                <Pressable onPress={()=> setOpen(true)}>
-                    <Text style={tw('text-black')}>Open date picker</Text>
-                    <DatePicker
-                        modal
-                        open={open}
-                        date={date}
-                        onConfirm={(date) => {
-                        setOpen(false)
-                        setDate(date)
-                        }}
-                        onCancel={() => {
-                        setOpen(false)
-                        }}
-                    />
-                </Pressable>
+                <DatePicker date={date} onDateChange={setDate} />
 
-                <Pressable onPress={()=>addReminder(title)}>
+                <Pressable onPress={()=>addReminder(title, description)}>
                     <Text style={tw('p-2 text-black border-2 rounded-xl')}>Add Reminder</Text>
                 </Pressable>
             </View>
